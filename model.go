@@ -98,7 +98,7 @@ type Receiver struct {
 	ExternalID          string              `json:"external_id"`
 	ShowAds             bool                `json:"show_ads"`
 	Target              *Receiver           `json:"target"`
-	Captions            map[string]string      `json:"captions"` // not from IB, but needed for UnmarshalReceiver()
+	Captions            map[string]string   `json:"captions"` // not from IB, but needed for UnmarshalReceiver()
 }
 
 // Item is the base type of all items. It is not used outside the IB package, as
@@ -301,24 +301,24 @@ type ImageURL struct {
 
 // Gallery represents an image gallery
 type Gallery struct {
-	Type                ItemType       `json:"type"`
-	ContentID           int            `json:"content_id"`
-	TeaserTitle         string         `json:"teaser_title"`
-	TeaserText          string         `json:"teaser_text"`
-	TeaserImage         string         `json:"teaser_image"`
-	PublicationDate     int64          `json:"publication_date"`
-	Authors             []Person       `json:"author_objects"`
-	Keywords            string         `json:"keywords"`
-	Title               string         `json:"title"`
-	Subheadline         string         `json:"subheadline"`
-	Media               []Item         `json:"media"`
-	Items               []Item         `json:"items"`
+	Type                ItemType          `json:"type"`
+	ContentID           int               `json:"content_id"`
+	TeaserTitle         string            `json:"teaser_title"`
+	TeaserText          string            `json:"teaser_text"`
+	TeaserImage         string            `json:"teaser_image"`
+	PublicationDate     int64             `json:"publication_date"`
+	Authors             []Person          `json:"author_objects"`
+	Keywords            string            `json:"keywords"`
+	Title               string            `json:"title"`
+	Subheadline         string            `json:"subheadline"`
+	Media               []Item            `json:"media"`
+	Items               []Item            `json:"items"`
 	Captions            map[string]string `json:"captions"`
-	CanonicalURL        string         `json:"canonical_url"`
-	URL                 string         `json:"url"`
-	NavContext          []string       `json:"navigation_context"`
-	AnalyticsCategory   string         `json:"analytics_category"`
-	AdvertisingCategory string         `json:"advertising_category"`
+	CanonicalURL        string            `json:"canonical_url"`
+	URL                 string            `json:"url"`
+	NavContext          []string          `json:"navigation_context"`
+	AnalyticsCategory   string            `json:"analytics_category"`
+	AdvertisingCategory string            `json:"advertising_category"`
 }
 
 func (g *Gallery) GetType() ItemType {
@@ -527,6 +527,7 @@ type HTMLContent struct {
 	ContentID           int      `json:"content_id"`
 	PublicationDate     int64    `json:"publication_date"`
 	Code                string   `json:"code"`
+	TeaserTitle         string   `json:"teaser_title"`
 	NavContext          []string `json:"navigation_context"`
 	AnalyticsCategory   string   `json:"analytics_category"`
 	AdvertisingCategory string   `json:"advertising_category"`
@@ -541,7 +542,7 @@ func (h *HTMLContent) GetContentID() int {
 }
 
 func (h *HTMLContent) GetTeaserTitle() string {
-	return ""
+	return h.TeaserTitle
 }
 
 func (h *HTMLContent) GetTeaserText() string {
