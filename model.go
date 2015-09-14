@@ -527,6 +527,7 @@ type HTMLContent struct {
 	ContentID           int      `json:"content_id"`
 	PublicationDate     int64    `json:"publication_date"`
 	Code                string   `json:"code"`
+	URL                 string   `json:"url"`
 	TeaserTitle         string   `json:"teaser_title"`
 	NavContext          []string `json:"navigation_context"`
 	AnalyticsCategory   string   `json:"analytics_category"`
