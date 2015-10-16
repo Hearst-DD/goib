@@ -124,6 +124,7 @@ type Collection struct {
 	StartIndex          int                 `json:"start_index"`
 	Keywords            string              `json:"keywords"` // populated only in search results
 	Items               []Item              `json:"items"`
+	Media               []Item              `json:"media"`
 	Settings            []map[string]string `json:"settings"`
 	NavContext          []string            `json:"navigation_context"`
 	AnalyticsCategory   string              `json:"analytics_category"`
