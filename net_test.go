@@ -52,7 +52,7 @@ func Test_doGet_timeout(t *testing.T) {
 
 	_, err := a.doGet(testSvr.URL)
 	assert.NotNil(t, err)
-	assert.Equal(t, fmt.Sprintf("Get %s: read tcp %s: use of closed network connection", testSvr.URL, testSvr.URL[7:]), err.Error())
+	assert.Equal(t, fmt.Sprintf("Get %s: net/http: request canceled (Client.Timeout exceeded while awaiting headers)", testSvr.URL), err.Error())
 
 	netClient.Timeout = oldTimeout
 }

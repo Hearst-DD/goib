@@ -434,6 +434,14 @@ func (api *api) unmarshalCollection(r Receiver) (c *Collection) {
 	c.ContentName = r.ContentName
 	c.TotalCount = r.TotalCount
 	c.StartIndex = r.StartIndex
+	for _, rInner := range r.Media {
+		item, err := api.UnmarshalReceiver(rInner)
+		if err != nil {
+			log.Warn("error unmarshalling sub-object: %v", err)
+		} else {
+			c.Media = append(c.Media, item)
+		}
+	}
 	for _, rInner := range r.Items {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
