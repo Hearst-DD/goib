@@ -262,7 +262,7 @@ func (api *api) unmarshalArticle(r Receiver) (a *Article) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)
@@ -274,7 +274,7 @@ func (api *api) unmarshalArticle(r Receiver) (a *Article) {
 	for _, rInner := range r.RelatedMedia {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling related media sub-object: %v", err)
@@ -307,7 +307,7 @@ func (api *api) unmarshalVideo(r Receiver) (v *Video) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)
@@ -341,7 +341,7 @@ func (api *api) unmarshalLivevideo(r Receiver) (l *Livevideo) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)
@@ -396,7 +396,7 @@ func (api *api) unmarshalGallery(r Receiver) (g *Gallery) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)
@@ -456,7 +456,7 @@ func (api *api) unmarshalCollection(r Receiver) (c *Collection) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)
@@ -467,7 +467,7 @@ func (api *api) unmarshalCollection(r Receiver) (c *Collection) {
 	for _, rInner := range r.Items {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)
@@ -493,7 +493,7 @@ func (api *api) unmarshalSearch(r Receiver) (s *Collection) {
 	for _, rInner := range r.Items {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)
@@ -528,7 +528,7 @@ func (api *api) unmarshalExternalLink(r Receiver) (e *ExternalLink) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)
@@ -612,7 +612,7 @@ func (api *api) unmarshalAudio(r Receiver) (a *Audio) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)
@@ -639,7 +639,7 @@ func (api *api) unmarshalTeaser(r Receiver) (t *Teaser, err error) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
-			if err == errUnsupportedType {
+			if err == errUnsupportedType || err == errTeaserMissingTarget {
 				continue
 			}
 			log.Warn("error unmarshalling sub-object: %v", err)

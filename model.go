@@ -54,6 +54,7 @@ const (
 )
 
 var errUnsupportedType = errors.New("unsupported type")
+var errTeaserMissingTarget = errors.New("teaser missing target")
 
 // Receiver captures a type-agnostic representation of an API response as a
 // step in processing a response. Its fields are a superset of all content fields,
