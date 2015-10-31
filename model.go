@@ -36,6 +36,8 @@ const (
 	TeaserType = "TEASER"
 	// SettingsType is someone's idiot idea of a joke
 	SettingsType = ""
+	// DownloadFileType is a download file.
+	DownloadFileType = "DOWNLOAD_FILE"
 )
 
 type ClosingsFilter string
@@ -99,6 +101,7 @@ type Receiver struct {
 	ShowAds             bool                `json:"show_ads"`
 	Target              *Receiver           `json:"target"`
 	Captions            map[string]string   `json:"captions"` // not from IB, but needed for UnmarshalReceiver()
+	LinkText            string              `json:"link_text"`
 }
 
 // Item is the base type of all items. It is not used outside the IB package, as
@@ -686,4 +689,35 @@ func (t *Teaser) GetTeaserText() string {
 
 func (t *Teaser) GetPublicationDate() int64 {
 	return t.PublicationDate
+}
+
+// DownloadFile represents a file download object
+type DownloadFile struct {
+	Type            ItemType `json:"type"`
+	ContentID       int      `json:"content_id"`
+	PublicationDate int64    `json:"publication_date"`
+	TeaserTitle     string   `json:"teaser_title"`
+	TeaserText      string   `json:"teaser_text"`
+	LinkText        string   `json:"link_text"`
+	URL             string   `json:"url"`
+}
+
+func (d *DownloadFile) GetType() ItemType {
+	return DownloadFileType
+}
+
+func (d *DownloadFile) GetContentID() int {
+	return d.ContentID
+}
+
+func (d *DownloadFile) GetTeaserTitle() string {
+	return d.TeaserTitle
+}
+
+func (d *DownloadFile) GetTeaserText() string {
+	return d.TeaserText
+}
+
+func (d *DownloadFile) GetPublicationDate() int64 {
+	return d.PublicationDate
 }

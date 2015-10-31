@@ -232,6 +232,8 @@ func (api *api) UnmarshalReceiver(r Receiver) (Item, error) {
 		return api.unmarshalAudio(r), nil
 	case TeaserType:
 		return api.unmarshalTeaser(r)
+	case DownloadFileType:
+		return api.unmarshalDownloadFile(r), nil
 	default:
 		return nil, fmt.Errorf("unknonwn response type for obj %d: %s", r.ContentID, r.Type)
 	}
@@ -622,6 +624,19 @@ func (api *api) unmarshalTeaser(r Receiver) (t *Teaser, err error) {
 	t.Target = target
 
 	return t, nil
+}
+
+func (api *api) unmarshalDownloadFile(r Receiver) (df *DownloadFile) {
+	df = &DownloadFile{}
+	df.Type = r.Type
+	df.ContentID = r.ContentID
+	df.TeaserTitle = getTeaserTitle(&r)
+	df.TeaserText = r.TeaserText
+	df.LinkText = r.LinkText
+	df.PublicationDate = r.PublicationDate
+	df.URL = r.URL
+
+	return df
 }
 
 func unmarshalGalleryCaptions(r Receiver) map[string]string {
