@@ -234,6 +234,8 @@ func (api *api) UnmarshalReceiver(r Receiver) (Item, error) {
 		return api.unmarshalTeaser(r)
 	case DownloadFileType:
 		return api.unmarshalDownloadFile(r), nil
+	case UnsupportedType:
+		return nil, errUnsupportedType
 	default:
 		return nil, fmt.Errorf("unknonwn response type for obj %d: %s", r.ContentID, r.Type)
 	}
@@ -260,6 +262,9 @@ func (api *api) unmarshalArticle(r Receiver) (a *Article) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			a.Media = append(a.Media, item)
@@ -269,6 +274,9 @@ func (api *api) unmarshalArticle(r Receiver) (a *Article) {
 	for _, rInner := range r.RelatedMedia {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling related media sub-object: %v", err)
 		} else {
 			a.RelatedMedia = append(a.RelatedMedia, item)
@@ -299,6 +307,9 @@ func (api *api) unmarshalVideo(r Receiver) (v *Video) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			v.Media = append(v.Media, item)
@@ -330,6 +341,9 @@ func (api *api) unmarshalLivevideo(r Receiver) (l *Livevideo) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			l.Media = append(l.Media, item)
@@ -382,6 +396,9 @@ func (api *api) unmarshalGallery(r Receiver) (g *Gallery) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			g.Media = append(g.Media, item)
@@ -439,6 +456,9 @@ func (api *api) unmarshalCollection(r Receiver) (c *Collection) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			c.Media = append(c.Media, item)
@@ -447,6 +467,9 @@ func (api *api) unmarshalCollection(r Receiver) (c *Collection) {
 	for _, rInner := range r.Items {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			c.Items = append(c.Items, item)
@@ -470,6 +493,9 @@ func (api *api) unmarshalSearch(r Receiver) (s *Collection) {
 	for _, rInner := range r.Items {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			s.Items = append(s.Items, item)
@@ -502,6 +528,9 @@ func (api *api) unmarshalExternalLink(r Receiver) (e *ExternalLink) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			e.Media = append(e.Media, item)
@@ -583,6 +612,9 @@ func (api *api) unmarshalAudio(r Receiver) (a *Audio) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			a.Media = append(a.Media, item)
@@ -607,6 +639,9 @@ func (api *api) unmarshalTeaser(r Receiver) (t *Teaser, err error) {
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
+			if err == errUnsupportedType {
+				continue
+			}
 			log.Warn("error unmarshalling sub-object: %v", err)
 		} else {
 			t.Media = append(t.Media, item)

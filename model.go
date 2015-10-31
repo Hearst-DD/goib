@@ -1,5 +1,7 @@
 package goib
 
+import "errors"
+
 // ItemType is the type of content encapsulated by the object
 type ItemType string
 
@@ -38,6 +40,8 @@ const (
 	SettingsType = ""
 	// DownloadFileType is a download file.
 	DownloadFileType = "DOWNLOAD_FILE"
+	// UnsupportedType is unsupported.
+	UnsupportedType = "UNSUPPORTED"
 )
 
 type ClosingsFilter string
@@ -48,6 +52,8 @@ const (
 	ClosingsCount  ClosingsFilter = "count"
 	ClosingsInst   ClosingsFilter = "institution"
 )
+
+var errUnsupportedType = errors.New("unsupported type")
 
 // Receiver captures a type-agnostic representation of an API response as a
 // step in processing a response. Its fields are a superset of all content fields,
