@@ -649,7 +649,7 @@ func (api *api) unmarshalTeaser(r Receiver) (t *Teaser, err error) {
 	}
 
 	if r.Target == nil {
-		return t, fmt.Errorf("teaser object missing target %d", t.ContentID)
+		return t, errTeaserMissingTarget
 	}
 
 	target, err := api.UnmarshalReceiver(*r.Target)
