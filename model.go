@@ -222,6 +222,7 @@ type Video struct {
 	AnalyticsCategory   string        `json:"analytics_category"`
 	AdvertisingCategory string        `json:"advertising_category"`
 	ShowAds             bool          `json:"show_ads"`
+	Stream              string        `json:"m3u8"`
 }
 
 func (v *Video) GetType() ItemType {
