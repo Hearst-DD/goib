@@ -62,53 +62,54 @@ var errTeaserMissingTarget = errors.New("teaser missing target")
 // This object should not be used outside of the IB API classes. It is exposed
 // only to facilitate JSON unmarshalling.
 type Receiver struct {
-	Type                ItemType            `json:"type"`
-	ContentID           int                 `json:"content_id"`
-	ContentName         string              `json:"content_name"`
-	CollectionName      string              `json:"collection_name"`
-	Items               []Receiver          `json:"items"`
-	TeaserTitle         string              `json:"teaser_title"`
-	TeaserText          string              `json:"teaser_text"`
-	TeaserImage         string              `json:"teaser_image"`
-	PublicationDate     int64               `json:"publication_date"`
-	Title               string              `json:"title"`
-	Subheadline         string              `json:"subheadline"`
-	Text                string              `json:"article_text"`
-	Author              string              `json:"author"`
-	Flavors             []VideoFlavor       `json:"flavors"`
-	StartIndex          int                 `json:"start_index"`
-	TotalCount          int                 `json:"total_count"`
-	Keywords            string              `json:"keywords"`
-	AltText             string              `json:"alt_text"`
-	Caption             string              `json:"caption"`
-	URLs                []ImageURL          `json:"urls"`
-	Media               []Receiver          `json:"media"`
-	RelatedMedia        []Receiver          `json:"related_media"`
-	Authors             []Person            `json:"author_objects"`
-	Settings            []map[string]string `json:"settings"`
-	Copyright           string              `json:"copyright"`
-	CopyrightObjects    []CopyrightObject   `json:"copyright_objects"`
-	ExternalContent     string              `json:"external_content"`
-	Code                string              `json:"code"`
-	CanonicalURL        string              `json:"canonical_url"`
-	URL                 string              `json:"url"`
-	StaticMap           string              `json:"static_map"`
-	InteractiveMap      string              `json:"interactive_map"`
-	Email               string              `json:"email"`
-	Bio                 string              `json:"biography"`
-	FullName            string              `json:"full_name"`
-	Struct              []interface{}       `json:"struct"`
-	Photo               []Image             `json:"photo"`
-	Stream              string              `json:"m3u8"`
-	NavContext          []string            `json:"navigation_context"`
-	AnalyticsCategory   string              `json:"analytics_category"`
-	AdvertisingCategory string              `json:"advertising_category"`
-	Dateline            string              `json:"author_location"`
-	ExternalID          string              `json:"external_id"`
-	ShowAds             bool                `json:"show_ads"`
-	Target              *Receiver           `json:"target"`
-	Captions            map[string]string   `json:"captions"` // not from IB, but needed for UnmarshalReceiver()
-	LinkText            string              `json:"link_text"`
+	Type                    ItemType            `json:"type"`
+	ContentID               int                 `json:"content_id"`
+	ContentName             string              `json:"content_name"`
+	CollectionName          string              `json:"collection_name"`
+	Items                   []Receiver          `json:"items"`
+	TeaserTitle             string              `json:"teaser_title"`
+	TeaserText              string              `json:"teaser_text"`
+	TeaserImage             string              `json:"teaser_image"`
+	PublicationDate         int64               `json:"publication_date"`
+	Title                   string              `json:"title"`
+	Subheadline             string              `json:"subheadline"`
+	Text                    string              `json:"article_text"`
+	Author                  string              `json:"author"`
+	Flavors                 []VideoFlavor       `json:"flavors"`
+	StartIndex              int                 `json:"start_index"`
+	TotalCount              int                 `json:"total_count"`
+	Keywords                string              `json:"keywords"`
+	AltText                 string              `json:"alt_text"`
+	Caption                 string              `json:"caption"`
+	URLs                    []ImageURL          `json:"urls"`
+	Media                   []Receiver          `json:"media"`
+	RelatedMedia            []Receiver          `json:"related_media"`
+	Authors                 []Person            `json:"author_objects"`
+	Settings                []map[string]string `json:"settings"`
+	Copyright               string              `json:"copyright"`
+	CopyrightObjects        []CopyrightObject   `json:"copyright_objects"`
+	ExternalContent         string              `json:"external_content"`
+	Code                    string              `json:"code"`
+	CanonicalURL            string              `json:"canonical_url"`
+	URL                     string              `json:"url"`
+	StaticMap               string              `json:"static_map"`
+	InteractiveMap          string              `json:"interactive_map"`
+	Email                   string              `json:"email"`
+	Bio                     string              `json:"biography"`
+	FullName                string              `json:"full_name"`
+	Struct                  []interface{}       `json:"struct"`
+	Photo                   []Image             `json:"photo"`
+	Stream                  string              `json:"m3u8"`
+	NavContext              []string            `json:"navigation_context"`
+	AnalyticsCategory       string              `json:"analytics_category"`
+	AdvertisingCategory     string              `json:"advertising_category"`
+	AdvertisingCategoryPath string              `json:"advertising_category_path"`
+	Dateline                string              `json:"author_location"`
+	ExternalID              string              `json:"external_id"`
+	ShowAds                 bool                `json:"show_ads"`
+	Target                  *Receiver           `json:"target"`
+	Captions                map[string]string   `json:"captions"` // not from IB, but needed for UnmarshalReceiver()
+	LinkText                string              `json:"link_text"`
 }
 
 // Item is the base type of all items. It is not used outside the IB package, as
@@ -123,22 +124,23 @@ type Item interface {
 
 // Collection represents a collection of IB Items and metadata about those items
 type Collection struct {
-	Type                ItemType            `json:"type"`
-	ContentID           int                 `json:"content_id"`
-	TeaserTitle         string              `json:"teaser_title"`
-	TeaserText          string              `json:"teaser_text"`
-	TeaserImage         string              `json:"teaser_image"`
-	CollectionName      string              `json:"collection_name"`
-	ContentName         string              `json:"content_name"`
-	TotalCount          int                 `json:"total_count"`
-	StartIndex          int                 `json:"start_index"`
-	Keywords            string              `json:"keywords"` // populated only in search results
-	Items               []Item              `json:"items"`
-	Media               []Item              `json:"media"`
-	Settings            []map[string]string `json:"settings"`
-	NavContext          []string            `json:"navigation_context"`
-	AnalyticsCategory   string              `json:"analytics_category"`
-	AdvertisingCategory string              `json:"advertising_category"`
+	Type                    ItemType            `json:"type"`
+	ContentID               int                 `json:"content_id"`
+	TeaserTitle             string              `json:"teaser_title"`
+	TeaserText              string              `json:"teaser_text"`
+	TeaserImage             string              `json:"teaser_image"`
+	CollectionName          string              `json:"collection_name"`
+	ContentName             string              `json:"content_name"`
+	TotalCount              int                 `json:"total_count"`
+	StartIndex              int                 `json:"start_index"`
+	Keywords                string              `json:"keywords"` // populated only in search results
+	Items                   []Item              `json:"items"`
+	Media                   []Item              `json:"media"`
+	Settings                []map[string]string `json:"settings"`
+	NavContext              []string            `json:"navigation_context"`
+	AnalyticsCategory       string              `json:"analytics_category"`
+	AdvertisingCategory     string              `json:"advertising_category"`
+	AdvertisingCategoryPath string              `json:"advertising_category_path"`
 }
 
 func (c *Collection) GetType() ItemType {
@@ -163,24 +165,25 @@ func (c *Collection) GetPublicationDate() int64 {
 
 // Article represents an IB article
 type Article struct {
-	Type                ItemType `json:"type"`
-	ContentID           int      `json:"content_id"`
-	TeaserTitle         string   `json:"teaser_title"`
-	TeaserText          string   `json:"teaser_text"`
-	TeaserImage         string   `json:"teaser_image"`
-	PublicationDate     int64    `json:"publication_date"`
-	Title               string   `json:"title"`
-	Subheadline         string   `json:"subheadline"`
-	Text                string   `json:"article_text"`
-	Authors             []Person `json:"author_objects"`
-	Media               []Item   `json:"media"`
-	RelatedMedia        []Item   `json:"related_media"`
-	CanonicalURL        string   `json:"canonical_url"`
-	URL                 string   `json:"url"`
-	NavContext          []string `json:"navigation_context"`
-	AnalyticsCategory   string   `json:"analytics_category"`
-	AdvertisingCategory string   `json:"advertising_category"`
-	Dateline            string   `json:"author_location"`
+	Type                    ItemType `json:"type"`
+	ContentID               int      `json:"content_id"`
+	TeaserTitle             string   `json:"teaser_title"`
+	TeaserText              string   `json:"teaser_text"`
+	TeaserImage             string   `json:"teaser_image"`
+	PublicationDate         int64    `json:"publication_date"`
+	Title                   string   `json:"title"`
+	Subheadline             string   `json:"subheadline"`
+	Text                    string   `json:"article_text"`
+	Authors                 []Person `json:"author_objects"`
+	Media                   []Item   `json:"media"`
+	RelatedMedia            []Item   `json:"related_media"`
+	CanonicalURL            string   `json:"canonical_url"`
+	URL                     string   `json:"url"`
+	NavContext              []string `json:"navigation_context"`
+	AnalyticsCategory       string   `json:"analytics_category"`
+	AdvertisingCategory     string   `json:"advertising_category"`
+	AdvertisingCategoryPath string   `json:"advertising_category_path"`
+	Dateline                string   `json:"author_location"`
 }
 
 func (a *Article) GetType() ItemType {
@@ -205,24 +208,25 @@ func (a *Article) GetPublicationDate() int64 {
 
 // Video represents an IB video
 type Video struct {
-	Type                ItemType      `json:"type"`
-	ContentID           int           `json:"content_id"`
-	TeaserTitle         string        `json:"teaser_title"`
-	TeaserText          string        `json:"teaser_text"`
-	TeaserImage         string        `json:"teaser_image"`
-	PublicationDate     int64         `json:"publication_date"`
-	Authors             []Person      `json:"author_objects"`
-	Title               string        `json:"title"`
-	Subheadline         string        `json:"subheadline"`
-	Flavors             []VideoFlavor `json:"flavors"`
-	Media               []Item        `json:"media"`
-	CanonicalURL        string        `json:"canonical_url"`
-	URL                 string        `json:"url"`
-	NavContext          []string      `json:"navigation_context"`
-	AnalyticsCategory   string        `json:"analytics_category"`
-	AdvertisingCategory string        `json:"advertising_category"`
-	ShowAds             bool          `json:"show_ads"`
-	Stream              string        `json:"m3u8"`
+	Type                    ItemType      `json:"type"`
+	ContentID               int           `json:"content_id"`
+	TeaserTitle             string        `json:"teaser_title"`
+	TeaserText              string        `json:"teaser_text"`
+	TeaserImage             string        `json:"teaser_image"`
+	PublicationDate         int64         `json:"publication_date"`
+	Authors                 []Person      `json:"author_objects"`
+	Title                   string        `json:"title"`
+	Subheadline             string        `json:"subheadline"`
+	Flavors                 []VideoFlavor `json:"flavors"`
+	Media                   []Item        `json:"media"`
+	CanonicalURL            string        `json:"canonical_url"`
+	URL                     string        `json:"url"`
+	NavContext              []string      `json:"navigation_context"`
+	AnalyticsCategory       string        `json:"analytics_category"`
+	AdvertisingCategory     string        `json:"advertising_category"`
+	AdvertisingCategoryPath string        `json:"advertising_category_path"`
+	ShowAds                 bool          `json:"show_ads"`
+	Stream                  string        `json:"m3u8"`
 }
 
 func (v *Video) GetType() ItemType {
@@ -259,27 +263,28 @@ type VideoFlavor struct {
 
 // Image represents an IB image content piece
 type Image struct {
-	Type                ItemType          `json:"type"`
-	ContentID           int               `json:"content_id"`
-	TeaserTitle         string            `json:"teaser_title"`
-	TeaserText          string            `json:"teaser_text"`
-	TeaserImage         string            `json:"teaser_image"`
-	PublicationDate     int64             `json:"publication_date"`
-	AltText             string            `json:"alt_text"`
-	Caption             string            `json:"caption"`
-	Author              string            `json:"author"`
-	Authors             []Person          `json:"author_objects"`
-	Title               string            `json:"title"`
-	Subheadline         string            `json:"subheadline"`
-	Keywords            string            `json:"keywords"`
-	URLs                []ImageURL        `json:"urls"`
-	Copyright           string            `json:"copyright"`
-	CopyrightObjects    []CopyrightObject `json:"copyright_objects"`
-	URL                 string            `json:"url"`
-	CanonicalURL        string            `json:"canonical_url"`
-	NavContext          []string          `json:"navigation_context"`
-	AnalyticsCategory   string            `json:"analytics_category"`
-	AdvertisingCategory string            `json:"advertising_category"`
+	Type                    ItemType          `json:"type"`
+	ContentID               int               `json:"content_id"`
+	TeaserTitle             string            `json:"teaser_title"`
+	TeaserText              string            `json:"teaser_text"`
+	TeaserImage             string            `json:"teaser_image"`
+	PublicationDate         int64             `json:"publication_date"`
+	AltText                 string            `json:"alt_text"`
+	Caption                 string            `json:"caption"`
+	Author                  string            `json:"author"`
+	Authors                 []Person          `json:"author_objects"`
+	Title                   string            `json:"title"`
+	Subheadline             string            `json:"subheadline"`
+	Keywords                string            `json:"keywords"`
+	URLs                    []ImageURL        `json:"urls"`
+	Copyright               string            `json:"copyright"`
+	CopyrightObjects        []CopyrightObject `json:"copyright_objects"`
+	URL                     string            `json:"url"`
+	CanonicalURL            string            `json:"canonical_url"`
+	NavContext              []string          `json:"navigation_context"`
+	AnalyticsCategory       string            `json:"analytics_category"`
+	AdvertisingCategory     string            `json:"advertising_category"`
+	AdvertisingCategoryPath string            `json:"advertising_category_path"`
 }
 
 func (i *Image) GetType() ItemType {
@@ -313,24 +318,25 @@ type ImageURL struct {
 
 // Gallery represents an image gallery
 type Gallery struct {
-	Type                ItemType          `json:"type"`
-	ContentID           int               `json:"content_id"`
-	TeaserTitle         string            `json:"teaser_title"`
-	TeaserText          string            `json:"teaser_text"`
-	TeaserImage         string            `json:"teaser_image"`
-	PublicationDate     int64             `json:"publication_date"`
-	Authors             []Person          `json:"author_objects"`
-	Keywords            string            `json:"keywords"`
-	Title               string            `json:"title"`
-	Subheadline         string            `json:"subheadline"`
-	Media               []Item            `json:"media"`
-	Items               []Item            `json:"items"`
-	Captions            map[string]string `json:"captions"`
-	CanonicalURL        string            `json:"canonical_url"`
-	URL                 string            `json:"url"`
-	NavContext          []string          `json:"navigation_context"`
-	AnalyticsCategory   string            `json:"analytics_category"`
-	AdvertisingCategory string            `json:"advertising_category"`
+	Type                    ItemType          `json:"type"`
+	ContentID               int               `json:"content_id"`
+	TeaserTitle             string            `json:"teaser_title"`
+	TeaserText              string            `json:"teaser_text"`
+	TeaserImage             string            `json:"teaser_image"`
+	PublicationDate         int64             `json:"publication_date"`
+	Authors                 []Person          `json:"author_objects"`
+	Keywords                string            `json:"keywords"`
+	Title                   string            `json:"title"`
+	Subheadline             string            `json:"subheadline"`
+	Media                   []Item            `json:"media"`
+	Items                   []Item            `json:"items"`
+	Captions                map[string]string `json:"captions"`
+	CanonicalURL            string            `json:"canonical_url"`
+	URL                     string            `json:"url"`
+	NavContext              []string          `json:"navigation_context"`
+	AnalyticsCategory       string            `json:"analytics_category"`
+	AdvertisingCategory     string            `json:"advertising_category"`
+	AdvertisingCategoryPath string            `json:"advertising_category_path"`
 }
 
 func (g *Gallery) GetType() ItemType {
@@ -355,21 +361,22 @@ func (g *Gallery) GetPublicationDate() int64 {
 
 // Audio represents an audio clip
 type Audio struct {
-	Type                ItemType `json:"type"`
-	ContentID           int      `json:"content_id"`
-	Title               string   `json:"title"`
-	Subheadline         string   `json:"subheadline"`
-	TeaserTitle         string   `json:"teaser_title"`
-	TeaserText          string   `json:"teaser_text"`
-	Authors             []Person `json:"author_objects"`
-	CanonicalURL        string   `json:"canonical_url"`
-	URL                 string   `json:"url"`
-	Media               []Item   `json:"media"`
-	Stream              string   `json:"stream"`
-	PublicationDate     int64    `json:"publication_date"`
-	NavContext          []string `json:"navigation_context"`
-	AnalyticsCategory   string   `json:"analytics_category"`
-	AdvertisingCategory string   `json:"advertising_category"`
+	Type                    ItemType `json:"type"`
+	ContentID               int      `json:"content_id"`
+	Title                   string   `json:"title"`
+	Subheadline             string   `json:"subheadline"`
+	TeaserTitle             string   `json:"teaser_title"`
+	TeaserText              string   `json:"teaser_text"`
+	Authors                 []Person `json:"author_objects"`
+	CanonicalURL            string   `json:"canonical_url"`
+	URL                     string   `json:"url"`
+	Media                   []Item   `json:"media"`
+	Stream                  string   `json:"stream"`
+	PublicationDate         int64    `json:"publication_date"`
+	NavContext              []string `json:"navigation_context"`
+	AnalyticsCategory       string   `json:"analytics_category"`
+	AdvertisingCategory     string   `json:"advertising_category"`
+	AdvertisingCategoryPath string   `json:"advertising_category_path"`
 }
 
 func (a *Audio) GetType() ItemType {
@@ -394,23 +401,24 @@ func (a *Audio) GetPublicationDate() int64 {
 
 // Livevideo represents a live stream
 type Livevideo struct {
-	Type                ItemType `json:"type"`
-	ContentID           int      `json:"content_id"`
-	Title               string   `json:"title"`
-	Subheadline         string   `json:"subheadline"`
-	TeaserTitle         string   `json:"teaser_title"`
-	TeaserText          string   `json:"teaser_text"`
-	PublicationDate     int64    `json:"publication_date"`
-	Authors             []Person `json:"author_objects"`
-	CanonicalURL        string   `json:"canonical_url"`
-	URL                 string   `json:"url"`
-	Media               []Item   `json:"media"`
-	Stream              string   `json:"stream"`
-	ExternalID          string   `json:"external_id"`
-	NavContext          []string `json:"navigation_context"`
-	AnalyticsCategory   string   `json:"analytics_category"`
-	AdvertisingCategory string   `json:"advertising_category"`
-	ShowAds             bool     `json:"show_ads"`
+	Type                    ItemType `json:"type"`
+	ContentID               int      `json:"content_id"`
+	Title                   string   `json:"title"`
+	Subheadline             string   `json:"subheadline"`
+	TeaserTitle             string   `json:"teaser_title"`
+	TeaserText              string   `json:"teaser_text"`
+	PublicationDate         int64    `json:"publication_date"`
+	Authors                 []Person `json:"author_objects"`
+	CanonicalURL            string   `json:"canonical_url"`
+	URL                     string   `json:"url"`
+	Media                   []Item   `json:"media"`
+	Stream                  string   `json:"stream"`
+	ExternalID              string   `json:"external_id"`
+	NavContext              []string `json:"navigation_context"`
+	AnalyticsCategory       string   `json:"analytics_category"`
+	AdvertisingCategory     string   `json:"advertising_category"`
+	AdvertisingCategoryPath string   `json:"advertising_category_path"`
+	ShowAds                 bool     `json:"show_ads"`
 }
 
 func (l *Livevideo) GetType() ItemType {
@@ -435,20 +443,21 @@ func (l *Livevideo) GetPublicationDate() int64 {
 
 // Map represents a map
 type Map struct {
-	Type                ItemType `json:"type"`
-	ContentID           int      `json:"content_id"`
-	PublicationDate     int64    `json:"publication_date"`
-	TeaserTitle         string   `json:"teaser_title"`
-	TeaserText          string   `json:"teaser_text"`
-	Title               string   `json:"title"`
-	Subheadline         string   `json:"subheadline"`
-	StaticMap           string   `json:"static_map"`
-	InteractiveMap      string   `json:"interactive_map"`
-	CanonicalURL        string   `json:"canonical_url"`
-	URL                 string   `json:"url"`
-	NavContext          []string `json:"navigation_context"`
-	AnalyticsCategory   string   `json:"analytics_category"`
-	AdvertisingCategory string   `json:"advertising_category"`
+	Type                    ItemType `json:"type"`
+	ContentID               int      `json:"content_id"`
+	PublicationDate         int64    `json:"publication_date"`
+	TeaserTitle             string   `json:"teaser_title"`
+	TeaserText              string   `json:"teaser_text"`
+	Title                   string   `json:"title"`
+	Subheadline             string   `json:"subheadline"`
+	StaticMap               string   `json:"static_map"`
+	InteractiveMap          string   `json:"interactive_map"`
+	CanonicalURL            string   `json:"canonical_url"`
+	URL                     string   `json:"url"`
+	NavContext              []string `json:"navigation_context"`
+	AnalyticsCategory       string   `json:"analytics_category"`
+	AdvertisingCategory     string   `json:"advertising_category"`
+	AdvertisingCategoryPath string   `json:"advertising_category_path"`
 }
 
 func (m *Map) GetType() ItemType {
@@ -535,15 +544,16 @@ func (e *ExternalLink) GetPublicationDate() int64 {
 
 // HTMLContent represents a content object that contains a raw HTML payload
 type HTMLContent struct {
-	Type                ItemType `json:"type"`
-	ContentID           int      `json:"content_id"`
-	PublicationDate     int64    `json:"publication_date"`
-	Code                string   `json:"code"`
-	URL                 string   `json:"url"`
-	TeaserTitle         string   `json:"teaser_title"`
-	NavContext          []string `json:"navigation_context"`
-	AnalyticsCategory   string   `json:"analytics_category"`
-	AdvertisingCategory string   `json:"advertising_category"`
+	Type                    ItemType `json:"type"`
+	ContentID               int      `json:"content_id"`
+	PublicationDate         int64    `json:"publication_date"`
+	Code                    string   `json:"code"`
+	URL                     string   `json:"url"`
+	TeaserTitle             string   `json:"teaser_title"`
+	NavContext              []string `json:"navigation_context"`
+	AnalyticsCategory       string   `json:"analytics_category"`
+	AdvertisingCategory     string   `json:"advertising_category"`
+	AdvertisingCategoryPath string   `json:"advertising_category_path"`
 }
 
 func (h *HTMLContent) GetType() ItemType {
@@ -568,26 +578,27 @@ func (h *HTMLContent) GetPublicationDate() int64 {
 
 // Person represents an IB person
 type Person struct {
-	Type                ItemType `json:"type"`
-	ContentID           int      `json:"content_id"`
-	Blurb               string   `json:"teaser_text"`
-	FullName            string   `json:"full_name"`
-	Title               string   `json:"title"`
-	TeaserImage         string   `json:"teaser_image"`
-	PublicationDate     int64    `json:"publication_date"`
-	Bio                 string   `json:"biography"`
-	Photo               []Image  `json:"photo,omitempty"`
-	Email               string   `json:"email"`
-	FacebookUsername    string   `json:"facebook_username"`
-	FacebookUID         string   `json:"facebook_uid"`
-	TwitterUsername     string   `json:"twitter_username"`
-	GPlusUID            string   `json:"gplus_uid"`
-	StoriesCOID         int      `json:"recent_stories"`
-	CanonicalURL        string   `json:"canonical_url"`
-	URL                 string   `json:"url"`
-	NavContext          []string `json:"navigation_context"`
-	AnalyticsCategory   string   `json:"analytics_category"`
-	AdvertisingCategory string   `json:"advertising_category"`
+	Type                    ItemType `json:"type"`
+	ContentID               int      `json:"content_id"`
+	Blurb                   string   `json:"teaser_text"`
+	FullName                string   `json:"full_name"`
+	Title                   string   `json:"title"`
+	TeaserImage             string   `json:"teaser_image"`
+	PublicationDate         int64    `json:"publication_date"`
+	Bio                     string   `json:"biography"`
+	Photo                   []Image  `json:"photo,omitempty"`
+	Email                   string   `json:"email"`
+	FacebookUsername        string   `json:"facebook_username"`
+	FacebookUID             string   `json:"facebook_uid"`
+	TwitterUsername         string   `json:"twitter_username"`
+	GPlusUID                string   `json:"gplus_uid"`
+	StoriesCOID             int      `json:"recent_stories"`
+	CanonicalURL            string   `json:"canonical_url"`
+	URL                     string   `json:"url"`
+	NavContext              []string `json:"navigation_context"`
+	AnalyticsCategory       string   `json:"analytics_category"`
+	AdvertisingCategory     string   `json:"advertising_category"`
+	AdvertisingCategoryPath string   `json:"advertising_category_path"`
 }
 
 func (p *Person) GetType() ItemType {
@@ -665,18 +676,19 @@ func (c *Settings) GetPublicationDate() int64 {
 
 // Teaser represents ... something
 type Teaser struct {
-	Type                ItemType `json:"type"`
-	ContentID           int      `json:"content_id"`
-	Title               string   `json:"title"`
-	TeaserTitle         string   `json:"teaser_title"`
-	TeaserText          string   `json:"teaser_text"`
-	PublicationDate     int64    `json:"publication_date"`
-	Authors             []Person `json:"author_objects"`
-	Media               []Item   `json:"media"`
-	NavContext          []string `json:"navigation_context"`
-	AnalyticsCategory   string   `json:"analytics_category"`
-	AdvertisingCategory string   `json:"advertising_category"`
-	Target              Item     `json:"target"`
+	Type                    ItemType `json:"type"`
+	ContentID               int      `json:"content_id"`
+	Title                   string   `json:"title"`
+	TeaserTitle             string   `json:"teaser_title"`
+	TeaserText              string   `json:"teaser_text"`
+	PublicationDate         int64    `json:"publication_date"`
+	Authors                 []Person `json:"author_objects"`
+	Media                   []Item   `json:"media"`
+	NavContext              []string `json:"navigation_context"`
+	AnalyticsCategory       string   `json:"analytics_category"`
+	AdvertisingCategory     string   `json:"advertising_category"`
+	AdvertisingCategoryPath string   `json:"advertising_category_path"`
+	Target                  Item     `json:"target"`
 }
 
 func (t *Teaser) GetType() ItemType {
