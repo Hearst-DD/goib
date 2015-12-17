@@ -258,6 +258,7 @@ func (api *api) unmarshalArticle(r Receiver) (a *Article) {
 	a.NavContext = r.NavContext
 	a.AnalyticsCategory = r.AnalyticsCategory
 	a.AdvertisingCategory = r.AdvertisingCategory
+	a.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 	a.Dateline = r.Dateline
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
@@ -303,6 +304,7 @@ func (api *api) unmarshalVideo(r Receiver) (v *Video) {
 	v.NavContext = r.NavContext
 	v.AnalyticsCategory = r.AnalyticsCategory
 	v.AdvertisingCategory = r.AdvertisingCategory
+	v.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 	v.ShowAds = r.ShowAds
 	v.Stream = r.Stream
 	for _, rInner := range r.Media {
@@ -338,6 +340,7 @@ func (api *api) unmarshalLivevideo(r Receiver) (l *Livevideo) {
 	l.NavContext = r.NavContext
 	l.AnalyticsCategory = r.AnalyticsCategory
 	l.AdvertisingCategory = r.AdvertisingCategory
+	l.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 	l.ShowAds = r.ShowAds
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
@@ -374,6 +377,7 @@ func unmarshalImage(r Receiver) (i *Image) {
 	i.NavContext = r.NavContext
 	i.AnalyticsCategory = r.AnalyticsCategory
 	i.AdvertisingCategory = r.AdvertisingCategory
+	i.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 
 	return i
 }
@@ -394,6 +398,7 @@ func (api *api) unmarshalGallery(r Receiver) (g *Gallery) {
 	g.NavContext = r.NavContext
 	g.AnalyticsCategory = r.AnalyticsCategory
 	g.AdvertisingCategory = r.AdvertisingCategory
+	g.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
@@ -441,6 +446,7 @@ func unmarshalMap(r Receiver) (m *Map) {
 	m.NavContext = r.NavContext
 	m.AnalyticsCategory = r.AnalyticsCategory
 	m.AdvertisingCategory = r.AdvertisingCategory
+	m.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 
 	return m
 }
@@ -481,6 +487,7 @@ func (api *api) unmarshalCollection(r Receiver) (c *Collection) {
 	c.NavContext = r.NavContext
 	c.AnalyticsCategory = r.AnalyticsCategory
 	c.AdvertisingCategory = r.AdvertisingCategory
+	c.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 
 	return c
 }
@@ -552,6 +559,7 @@ func unmarshalHTMLContent(r Receiver) (h *HTMLContent) {
 	h.NavContext = r.NavContext
 	h.AnalyticsCategory = r.AnalyticsCategory
 	h.AdvertisingCategory = r.AdvertisingCategory
+	h.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 	return h
 }
 
@@ -590,6 +598,7 @@ func unmarshalPerson(r Receiver) (p *Person) {
 	p.NavContext = r.NavContext
 	p.AnalyticsCategory = r.AnalyticsCategory
 	p.AdvertisingCategory = r.AdvertisingCategory
+	p.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 
 	return p
 }
@@ -610,6 +619,7 @@ func (api *api) unmarshalAudio(r Receiver) (a *Audio) {
 	a.NavContext = r.NavContext
 	a.AnalyticsCategory = r.AnalyticsCategory
 	a.AdvertisingCategory = r.AdvertisingCategory
+	a.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
@@ -637,6 +647,7 @@ func (api *api) unmarshalTeaser(r Receiver) (t *Teaser, err error) {
 	t.NavContext = r.NavContext
 	t.AnalyticsCategory = r.AnalyticsCategory
 	t.AdvertisingCategory = r.AdvertisingCategory
+	t.AdvertisingCategoryPath = r.AdvertisingCategoryPath
 	for _, rInner := range r.Media {
 		item, err := api.UnmarshalReceiver(rInner)
 		if err != nil {
