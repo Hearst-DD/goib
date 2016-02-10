@@ -335,7 +335,7 @@ func (api *api) unmarshalLivevideo(r Receiver) (l *Livevideo) {
 	l.Title = r.Title
 	l.CanonicalURL = r.CanonicalURL
 	l.URL = r.URL
-	l.Stream = r.Stream
+	l.Stream = getStream(&r)
 	l.ExternalID = r.ExternalID
 	l.NavContext = r.NavContext
 	l.AnalyticsCategory = r.AnalyticsCategory
@@ -355,6 +355,23 @@ func (api *api) unmarshalLivevideo(r Receiver) (l *Livevideo) {
 	}
 
 	return l
+}
+
+func getStream(r *Receiver) (stream string) {
+	stream = r.Stream
+	if strings.Contains(r.ExternalID, ":") == false {
+		return stream
+	}
+	searchString := "http"
+	if strings.Contains(r.ExternalID, searchString) {
+		result := strings.Split(r.ExternalID, searchString)
+		if len(result) > 1 {
+			stream = searchString + result[1]
+		} else {
+			log.Warn("error: nil found splitting ExternalID: %s at %s", r.ExternalID, searchString)
+		}
+	}
+	return stream
 }
 
 func unmarshalImage(r Receiver) (i *Image) {
