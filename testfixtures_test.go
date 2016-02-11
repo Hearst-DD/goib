@@ -1643,3 +1643,51 @@ var closingInstJSON = `
   "type" : "CLOSINGS"
 }
 `
+var liveVideoJSON = `
+{
+	"type": "livevideo",
+	"coid": 37823274,
+	"title": "Test",
+	"subtitle": "Test",
+	"dek": "Test",
+	"pub_date": "2016-02-05T18:46:26Z",
+	"image": {
+		"type": "image",
+		"coid": 37804066,
+		"title": "Image for JW Livestreams or other JW objects",
+		"caption": "
+		Image for JW Livestreams or other JW objects
+
+		",
+		"pub_date": "2016-02-03T22:59:45Z",
+		"crops": {
+			"full": {
+				"url": "http://www.khtvnews.com/image/view/-/37804066/highRes/2/-/maxh/338/maxw/600/-/4c5yvrz/-/JW-Placeholder-Image.jpg",
+				"w": 600,
+				"h": 338
+			},
+			"large": {
+				"url": "http://www.khtvnews.com/image/view/-/37804066/highRes/2/-/maxh/338/maxw/600/-/4c5yvrz/-/JW-Placeholder-Image.jpg",
+				"w": 600,
+				"h": 338
+			},
+			"small": {
+				"url": "http://www.khtvnews.com/image/view/-/37804066/highRes/2/-/maxh/338/maxw/600/-/4c5yvrz/-/JW-Placeholder-Image.jpg",
+				"w": 600,
+				"h": 338
+			},
+			"thumb": {
+				"url": "http://www.khtvnews.com/image/view/-/37804066/highRes/2/-/maxh/85/maxw/150/-/10qraj5z/-/JW-Placeholder-Image.jpg",
+				"w": 150,
+				"h": 85
+			}
+		},
+		"copyright": "Carrie Osland 2016"
+	},
+	"stream": "http://cdnapi.kaltura.com/p/557781/sp/55778100/playManifest/entryId/jw:https://content.uplynk.com/channel/8e7504962da04956953c874a7ad11c6b.m3u8?ad=wvtmmidroll/format/applehttp/protocol/http/a.m3u8",
+	"url": "http://www.khtvnews.com/test/37823274",
+	"share_url": "http://bit.ly/1TObmUb",
+	"show_ads": true
+}`
+
+var expectedStream = `"https://content.uplynk.com/channel/8e7504962da04956953c874a7ad11c6b.m3u8?ad=wvtmmidroll/format/applehttp/protocol/http/a.m3u8"`

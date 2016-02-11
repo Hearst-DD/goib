@@ -214,6 +214,20 @@ func Test_Closing(t *testing.T) {
 	assert.Equal(t, "Friday: 2 Hour Delay; No AM half-day PreK/ECI", inst.Institution.Status)
 }
 
+func TestLiveVideo(t *testing.T) {
+	svr, a := setupServerAndAPI(liveVideoJSON)
+	defer svr.Close()
+
+	response, err := a.Content("someKrazyChannel", 12345, nil)
+	if err != nil {
+		panic(err)
+	}
+	assert.Nil(t, err, "error getting live video")
+
+	l := response.(*Livevideo)
+	assert.Equal(t, expectedStream, l.Stream)
+}
+
 func TestContentAPIShouldParseMapType(t *testing.T) {
 	svr, a := setupServerAndAPI(mapJSON)
 	defer svr.Close()
