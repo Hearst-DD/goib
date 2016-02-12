@@ -1711,4 +1711,4 @@ var liveVideoJSON = `
 }`
 
 
-var expectedStream = `"https://content.uplynk.com/channel/8e7504962da04956953c874a7ad11c6b.m3u8?ad=wvtmmidroll/format/applehttp/protocol/http/a.m3u8"`
+var expectedLiveStream = "https://content.uplynk.com/channel/8e7504962da04956953c874a7ad11c6b.m3u8?ad=wvtmmidroll"
