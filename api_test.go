@@ -225,7 +225,7 @@ func TestLiveVideo(t *testing.T) {
 	assert.Nil(t, err, "error getting live video")
 
 	l := response.(*Livevideo)
-	assert.Equal(t, expectedStream, l.Stream)
+	assert.Equal(t, expectedLiveStream, l.Stream)
 }
 
 func TestContentAPIShouldParseMapType(t *testing.T) {
