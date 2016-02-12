@@ -1643,7 +1643,7 @@ var closingInstJSON = `
   "type" : "CLOSINGS"
 }
 `
-var liveVideoJSON = `
+var liveVideoExternalID_JSON = `
 {
 	"type": "LIVEVIDEO",
 	"hash": "7bw1o2",
@@ -1710,5 +1710,73 @@ var liveVideoJSON = `
 	"m3u8": "http://cdnapi.kaltura.com/p/557781/sp/55778100/playManifest/entryId/jw:https://content.uplynk.com/channel/8e7504962da04956953c874a7ad11c6b.m3u8?ad=wvtmmidroll/format/applehttp/protocol/http/a.m3u8"
 }`
 
+var expectedLiveStreamExternalID = "https://content.uplynk.com/channel/8e7504962da04956953c874a7ad11c6b.m3u8?ad=wvtmmidroll"
 
-var expectedLiveStream = "https://content.uplynk.com/channel/8e7504962da04956953c874a7ad11c6b.m3u8?ad=wvtmmidroll"
+var liveVideoM3U8_JSON = `
+{
+	"type": "LIVEVIDEO",
+	"hash": "7bw1o2",
+	"content_id": 37823274,
+	"content_name": "JW Player WVTM Livestream - APP",
+	"navigation_context": [
+	"KHTV Home"
+	],
+	"analytics_category": "home",
+	"advertising_category": "homepage",
+	"advertising_category_path": "htv-khtv.com/homepage/homepage",
+	"title": "Test",
+	"valid_from": 2700000,
+	"valid_to": 4105144800,
+	"editorial_comment": null,
+	"period": "",
+	"keywords": "",
+	"url": "http://www.khtvnews.com/test/37823274",
+	"canonical_url": "",
+	"teaser_title": "Test",
+	"teaser_text": "<p>Test</p>",
+	"teaser_image": "http://www.khtvnews.com/image/view/-/37804066/highRes/2/-/maxh/225/maxw/300/-/13m4upa/-/JW-Placeholder-Image.jpg",
+	"media": [
+		{
+			"type": "IMAGE",
+			"hash": "7aollu",
+			"content_id": 37804066,
+			"publication_date": 1454540385,
+			"teaser_title": "Image for JW Livestreams or other JW objects",
+			"teaser_text": null,
+			"teaser_image": "http://www.khtvnews.com/image/view/-/37804066/highRes/2/-/maxh/225/maxw/300/-/13m4upa/-/JW-Placeholder-Image.jpg",
+			"urls": [
+				{
+				"version": "original",
+				"height": 338,
+				"width": 600,
+				"url": "http://www.khtvnews.com/image/view/-/37804066/highRes/2/-/maxh/338/maxw/600/-/4c5yvrz/-/JW-Placeholder-Image.jpg",
+				"mime": "image/jpeg"
+				},
+				{
+				"version": "DEFAULT",
+				"height": 169,
+				"width": 300,
+				"url": "http://www.khtvnews.com/image/view/-/37804066/highRes/2/-/maxh/169/maxw/300/-/xufu6yz/-/JW-Placeholder-Image.jpg",
+				"mime": "image/jpeg"
+				}
+			]
+		}
+	],
+	"author_objects": [ ],
+	"author": "",
+	"categories": [ ],
+	"creation_date": 1454623488,
+	"copyright_objects": [ ],
+	"copyright": "",
+	"publication_date": 1454697986,
+	"struct": [
+		{ }
+	],
+	"commenting_enabled": true,
+	"subheadline": "Test",
+	"show_ads": true,
+	"external_id": "0_o66rixth",
+	"m3u8": "http://cdnapi.kaltura.com/p/557781/sp/55778100/playManifest/entryId/0_o66rixth/format/applehttp/protocol/http/a.m3u8"
+}`
+
+var expectedLiveStreamM3U8 = "http://cdnapi.kaltura.com/p/557781/sp/55778100/playManifest/entryId/0_o66rixth/format/applehttp/protocol/http/a.m3u8"
